@@ -21,7 +21,17 @@ public class ServicoService {
         return servicoRepository.findAll();
     }
 
-    public Servico buscarPorID(Long id) {
+    public Servico alterar(Long id, Servico servicoAtualizado){
+
+        Servico servico = buscarPorId(id);
+
+        servico.setNome(servicoAtualizado.getNome());
+        servico.setNome(servicoAtualizado.getNome());
+
+        return servicoRepository.save(servico);
+    }
+
+    public Servico buscarPorId(Long id) {
         return servicoRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Serviço não encontrado"));
     }

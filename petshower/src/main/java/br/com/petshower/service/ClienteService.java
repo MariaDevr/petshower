@@ -21,6 +21,18 @@ public class ClienteService {
         return clienteRepository.findAll();
     }
 
+    public Cliente alterar(Long id, Cliente clienteAtualizado){
+
+        Cliente cliente = buscarPorId(id);
+
+        cliente.setNome(clienteAtualizado.getNome());
+        cliente.setEmail(clienteAtualizado.getEmail());
+        cliente.setCpf(clienteAtualizado.getCpf());
+        cliente.setEndereco(clienteAtualizado.getEndereco());
+
+        return clienteRepository.save(cliente);
+    }
+
     public Cliente buscarPorId(Long id) {
         return clienteRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Cliente não encontrado"));
