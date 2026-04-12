@@ -2,6 +2,8 @@ package br.com.petshower.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.math.BigDecimal;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -22,7 +24,7 @@ public class AtendimentoServico {
     @JoinColumn( name = "atendimento_id")
     private Atendimento atendimento;
 
-    private Float preco_dia;
+    private BigDecimal precoDia;
     private String descricao;
 
 }
