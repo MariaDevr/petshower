@@ -21,7 +21,18 @@ public class AtendimentoService {
         return atendimentoRepository.findAll();
     }
 
-    public Atendimento buscarPorID(Long id) {
+    public Atendimento alterar(Long id, Atendimento atendimentoAtualizado){
+
+        Atendimento atendimento = buscarPorId(id);
+
+        atendimento.setData(atendimentoAtualizado.getData());
+        atendimento.setEntrega(atendimentoAtualizado.getEntrega());
+        atendimento.setStatus(atendimentoAtualizado.getStatus());
+
+        return atendimentoRepository.save(atendimento);
+    }
+
+    public Atendimento buscarPorId(Long id) {
         return atendimentoRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Atendimento não encontrado"));
     }

@@ -21,14 +21,23 @@ public class AnimalService {
         return animalRepository.findAll();
     }
 
-    public Animal buscarPorID(Long id) {
+    public Animal alterar(Long id, Animal animalAtualizado){
+
+        Animal animal = buscarPorId(id);
+
+        animal.setNome(animalAtualizado.getNome());
+        animal.setIdade(animalAtualizado.getIdade());
+
+        return animalRepository.save(animal);
+    }
+
+    public Animal buscarPorId(Long id) {
         return animalRepository.findById(id)
-            .orElseThrow(() -> new RuntimeException("Animal não encontrado"));
+                .orElseThrow(() -> new RuntimeException("Animal não encontrado"));
     }
 
     public void excluir(Long id) {
         animalRepository.deleteById(id);
     }
-
 
 }
