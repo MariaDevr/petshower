@@ -1,8 +1,9 @@
 package br.com.petshower.model;
 
-import jakarta.persistence.*;
 import lombok.*;
 import java.util.Set;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -18,8 +19,16 @@ public class Cliente {
     @OneToMany(mappedBy="cliente")
     private Set<Animal> animais;
 
+    @NotBlank
+    @Column(nullable = false)
     private String nome;
+
+    @Email
     private String email;
+
+    @NotNull
+    @Column(nullable = false)
     private String cpf;
+
     private String endereco;
 }
