@@ -1,10 +1,10 @@
 package br.com.petshower.model;
 
-import jakarta.persistence.*;
 import lombok.*;
-
-import java.math.BigDecimal;
 import java.util.Set;
+import java.math.BigDecimal;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -20,6 +20,11 @@ public class Servico {
     @OneToMany(mappedBy="servico")
     private Set<AtendimentoServico> atendimentoServicos;
 
+    @NotBlank
+    @Column(nullable = false)
     private String nome;
+
+    @NotNull
+    @Column(nullable = false)
     private BigDecimal preco;
 }

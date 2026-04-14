@@ -1,9 +1,10 @@
 package br.com.petshower.model;
-import br.com.petshower.enums.StatusAtendimento;
-import jakarta.persistence.*;
+
 import lombok.*;
-import java.util.Date;
-import java.util.Set;
+import java.util.*;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
+import br.com.petshower.enums.StatusAtendimento;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -16,6 +17,7 @@ public class Atendimento {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @NotNull
     @ManyToOne
     @JoinColumn(name = "animal_id")
     private Animal animal;
@@ -23,8 +25,14 @@ public class Atendimento {
     @OneToMany(mappedBy="atendimento")
     private Set<AtendimentoServico> atendimentoServicos;
 
+    @NotNull
+    @Column(nullable = false)
     private Date data;
+
     private Boolean entrega;
+
+    private String descricao;
+
     @Enumerated(EnumType.STRING)
     private StatusAtendimento status;
 
