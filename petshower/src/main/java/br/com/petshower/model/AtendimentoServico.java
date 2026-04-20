@@ -1,7 +1,7 @@
 package br.com.petshower.model;
-import jakarta.persistence.*;
-import lombok.*;
 
+import lombok.*;
+import jakarta.persistence.*;
 import java.math.BigDecimal;
 
 @AllArgsConstructor

@@ -2,15 +2,15 @@ package br.com.petshower.dto;
 
 import lombok.*;
 import java.util.Date;
-import br.com.petshower.enums.StatusAtendimento;
 import jakarta.validation.constraints.*;
+import br.com.petshower.enums.StatusAtendimento;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
 
-public class AtendimentoDTO {
+public class AtendimentoCreateDTO {
 
     @NotNull
     private Long animalId;
@@ -20,6 +20,9 @@ public class AtendimentoDTO {
 
     @NotNull
     private StatusAtendimento status;
+
+    @NotNull
+    private Boolean entrega;
 
     private String descricao;
 }

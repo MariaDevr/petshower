@@ -1,23 +1,20 @@
 package br.com.petshower.dto;
 
-import jakarta.validation.constraints.*;
 import lombok.*;
+import java.math.BigDecimal;
+import jakarta.validation.constraints.*;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
 
-public class ClienteDTO {
+public class ServicoCreateDTO {
 
     @NotBlank
     private String nome;
 
-    @Email
-    private String email;
-
     @NotNull
-    private String cpf;
+    private BigDecimal preco;
 
-    private String endereco;
 }

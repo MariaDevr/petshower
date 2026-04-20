@@ -1,11 +1,12 @@
 package br.com.petshower.controller;
 
-import br.com.petshower.model.Servico;
-import br.com.petshower.service.ServicoService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
+import br.com.petshower.model.Servico;
+import br.com.petshower.dto.ServicoCreateDTO;
+import br.com.petshower.service.ServicoService;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.beans.factory.annotation.Autowired;
+
 
 @RestController
 @RequestMapping("/servicos")
@@ -16,13 +17,13 @@ public class ServicoController {
     private ServicoService servicoService;
 
     @PostMapping
-    public Servico criar(@RequestBody Servico cliente) {
-        return  servicoService.criar(cliente);
+    public Servico criar(@RequestBody ServicoCreateDTO dto) {
+        return  servicoService.criar(dto);
     }
 
     @PutMapping("/{id}")
-    public Servico atualizar(@PathVariable Long id, @RequestBody Servico servico) {
-        return servicoService.alterar(id, servico);
+    public Servico atualizar(@PathVariable Long id, @RequestBody ServicoCreateDTO dto) {
+        return servicoService.alterar(id, dto);
     }
 
     @GetMapping

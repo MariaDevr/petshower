@@ -30,8 +30,9 @@ public class Animal {
     @Column(nullable = false)
     private String nome;
 
-    private int idade;
+    private Integer idade;
 
+    @NotNull
     @Enumerated(EnumType.STRING)
     private CategoriaAnimal categoriaAnimal;
 }

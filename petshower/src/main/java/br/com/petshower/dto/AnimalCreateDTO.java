@@ -1,15 +1,15 @@
 package br.com.petshower.dto;
 
-import br.com.petshower.enums.CategoriaAnimal;
-import jakarta.validation.constraints.*;
 import lombok.*;
+import jakarta.validation.constraints.*;
+import br.com.petshower.enums.CategoriaAnimal;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
 
-public class AnimalDTO {
+public class AnimalCreateDTO {
 
     @NotNull
     private Long clienteId;
@@ -19,4 +19,6 @@ public class AnimalDTO {
 
     @NotNull
     private CategoriaAnimal categoriaAnimal;
+
+    private Integer idade;
 }
