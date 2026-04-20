@@ -1,5 +1,7 @@
 package br.com.petshower.service;
 
+import br.com.petshower.dto.AtendimentoCreateDTO;
+import br.com.petshower.dto.ClienteCreateDTO;
 import br.com.petshower.model.Cliente;
 import br.com.petshower.repository.ClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +15,14 @@ public class ClienteService {
     @Autowired
     private ClienteRepository clienteRepository;
 
-    public Cliente criar(Cliente cliente){
+    public Cliente criar(ClienteCreateDTO dto){
+
+        Cliente cliente = new Cliente();
+        cliente.setNome(dto.getNome());
+        cliente.setEmail(dto.getEmail());
+        cliente.setCpf(dto.getCpf());
+        cliente.setEndereco(dto.getEndereco());
+
         return clienteRepository.save(cliente);
     }
 
@@ -21,14 +30,12 @@ public class ClienteService {
         return clienteRepository.findAll();
     }
 
-    public Cliente alterar(Long id, Cliente clienteAtualizado){
+    public Cliente alterar(Long id, ClienteCreateDTO dto){
 
-        Cliente cliente = buscarPorId(id);
+        Cliente cliente = clienteRepository.findById(id)
+            .orElseThrow(() -> new RuntimeException("Cliente não encontrado"));
 
-        cliente.setNome(clienteAtualizado.getNome());
-        cliente.setEmail(clienteAtualizado.getEmail());
-        cliente.setCpf(clienteAtualizado.getCpf());
-        cliente.setEndereco(clienteAtualizado.getEndereco());
+        aplicarAtualizacaoParcial(cliente, dto);
 
         return clienteRepository.save(cliente);
     }
@@ -38,9 +45,32 @@ public class ClienteService {
                 .orElseThrow(() -> new RuntimeException("Cliente não encontrado"));
     }
 
-    public void excluir(Long id){
-        clienteRepository.deleteById(id);
+    public void excluir(Long id) {
+
+        Cliente cliente = clienteRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Cliente não encontrado"));
+
+        clienteRepository.delete(cliente);
     }
 
+    private  Cliente aplicarAtualizacaoParcial(Cliente cliente, ClienteCreateDTO dto){
 
+        if (dto.getNome() != null){
+            cliente.setNome(dto.getNome());
+        }
+
+        if (dto.getEmail() != null){
+            cliente.setEmail(dto.getEmail());
+        }
+
+        if (dto.getCpf() != null){
+            cliente.setCpf(dto.getCpf());
+        }
+
+        if (dto.getEndereco() != null){
+            cliente.setEndereco(dto.getEndereco());
+        }
+
+        return cliente;
+    }
 }

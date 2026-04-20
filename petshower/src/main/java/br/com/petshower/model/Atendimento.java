@@ -29,6 +29,7 @@ public class Atendimento {
     @Column(nullable = false)
     private Date data;
 
+    @NotNull
     private Boolean entrega;
 
     private String descricao;
