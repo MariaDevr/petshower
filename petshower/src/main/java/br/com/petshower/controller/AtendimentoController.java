@@ -1,5 +1,6 @@
 package br.com.petshower.controller;
 
+import br.com.petshower.dto.AtendimentoCreateDTO;
 import br.com.petshower.model.Atendimento;
 import br.com.petshower.service.AtendimentoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,13 +17,13 @@ public class AtendimentoController {
     private AtendimentoService atendimentoService;
 
     @PostMapping
-    public Atendimento criar(@RequestBody Atendimento atendimento) {
-        return  atendimentoService.criar(atendimento);
+    public Atendimento criar(@RequestBody AtendimentoCreateDTO dto) {
+        return  atendimentoService.criar(dto);
     }
 
     @PutMapping("/{id}")
-    public Atendimento atualizar(@PathVariable Long id, @RequestBody Atendimento atendimento) {
-        return atendimentoService.alterar(id, atendimento);
+    public Atendimento atualizar(@PathVariable Long id, @RequestBody AtendimentoCreateDTO dto) {
+        return atendimentoService.alterar(id, dto);
     }
 
     @GetMapping

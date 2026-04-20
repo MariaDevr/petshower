@@ -1,5 +1,6 @@
 package br.com.petshower.controller;
 
+import br.com.petshower.dto.ClienteCreateDTO;
 import br.com.petshower.model.Cliente;
 import br.com.petshower.service.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,13 +17,13 @@ public class ClienteController {
     private ClienteService clienteService;
 
     @PostMapping
-    public Cliente criar(@RequestBody Cliente cliente) {
-        return  clienteService.criar(cliente);
+    public Cliente criar(@RequestBody ClienteCreateDTO dto) {
+        return  clienteService.criar(dto);
     }
 
     @PutMapping("/{id}")
-    public Cliente atualizar(@PathVariable Long id, @RequestBody Cliente cliente) {
-        return clienteService.alterar(id, cliente);
+    public Cliente atualizar(@PathVariable Long id, @RequestBody ClienteCreateDTO dto) {
+        return clienteService.alterar(id,dto);
     }
 
     @GetMapping
