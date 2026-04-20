@@ -1,14 +1,15 @@
 package br.com.petshower.service;
 
-import br.com.petshower.dto.AtendimentoCreateDTO;
 import br.com.petshower.model.Animal;
 import br.com.petshower.model.Atendimento;
-import br.com.petshower.repository.AnimalRepository;
-import br.com.petshower.repository.AtendimentoRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
+import br.com.petshower.dto.AtendimentoCreateDTO;
+import br.com.petshower.repository.AnimalRepository;
+import br.com.petshower.repository.AtendimentoRepository;
+import org.springframework.stereotype.Service;
+import org.springframework.beans.factory.annotation.Autowired;
+
 
 @Service
 public class AtendimentoService {

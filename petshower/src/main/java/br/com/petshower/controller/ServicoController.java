@@ -1,12 +1,12 @@
 package br.com.petshower.controller;
 
-import br.com.petshower.dto.ServicoCreateDTO;
-import br.com.petshower.model.Servico;
-import br.com.petshower.service.ServicoService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
+import br.com.petshower.model.Servico;
+import br.com.petshower.dto.ServicoCreateDTO;
+import br.com.petshower.service.ServicoService;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.beans.factory.annotation.Autowired;
+
 
 @RestController
 @RequestMapping("/servicos")

@@ -1,12 +1,11 @@
 package br.com.petshower.controller;
 
-import br.com.petshower.dto.ClienteCreateDTO;
-import br.com.petshower.model.Cliente;
-import br.com.petshower.service.ClienteService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
+import br.com.petshower.model.Cliente;
+import br.com.petshower.dto.ClienteCreateDTO;
+import br.com.petshower.service.ClienteService;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @RestController
 @RequestMapping("/clientes")

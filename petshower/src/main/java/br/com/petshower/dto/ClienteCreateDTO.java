@@ -1,7 +1,7 @@
 package br.com.petshower.dto;
 
-import jakarta.validation.constraints.*;
 import lombok.*;
+import jakarta.validation.constraints.*;
 
 @AllArgsConstructor
 @NoArgsConstructor

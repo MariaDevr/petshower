@@ -2,8 +2,8 @@ package br.com.petshower.dto;
 
 import lombok.*;
 import java.util.Date;
-import br.com.petshower.enums.StatusAtendimento;
 import jakarta.validation.constraints.*;
+import br.com.petshower.enums.StatusAtendimento;
 
 @AllArgsConstructor
 @NoArgsConstructor

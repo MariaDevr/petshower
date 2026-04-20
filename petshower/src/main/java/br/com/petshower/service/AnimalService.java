@@ -4,8 +4,8 @@ import br.com.petshower.model.Animal;
 import br.com.petshower.model.Cliente;
 
 import java.util.List;
-import org.springframework.stereotype.Service;
 import br.com.petshower.dto.AnimalCreateDTO;
+import org.springframework.stereotype.Service;
 import br.com.petshower.repository.AnimalRepository;
 import br.com.petshower.repository.ClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;

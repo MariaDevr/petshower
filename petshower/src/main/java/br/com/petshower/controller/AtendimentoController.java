@@ -1,12 +1,11 @@
 package br.com.petshower.controller;
 
-import br.com.petshower.dto.AtendimentoCreateDTO;
+import java.util.List;
 import br.com.petshower.model.Atendimento;
+import org.springframework.web.bind.annotation.*;
+import br.com.petshower.dto.AtendimentoCreateDTO;
 import br.com.petshower.service.AtendimentoService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/atendimentos")

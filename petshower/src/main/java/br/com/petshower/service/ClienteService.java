@@ -1,13 +1,12 @@
 package br.com.petshower.service;
 
-import br.com.petshower.dto.AtendimentoCreateDTO;
-import br.com.petshower.dto.ClienteCreateDTO;
 import br.com.petshower.model.Cliente;
-import br.com.petshower.repository.ClienteRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
+import br.com.petshower.dto.ClienteCreateDTO;
+import org.springframework.stereotype.Service;
+import br.com.petshower.repository.ClienteRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @Service
 public class ClienteService {

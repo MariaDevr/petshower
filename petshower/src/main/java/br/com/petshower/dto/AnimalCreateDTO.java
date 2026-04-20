@@ -1,8 +1,8 @@
 package br.com.petshower.dto;
 
-import br.com.petshower.enums.CategoriaAnimal;
-import jakarta.validation.constraints.*;
 import lombok.*;
+import jakarta.validation.constraints.*;
+import br.com.petshower.enums.CategoriaAnimal;
 
 @AllArgsConstructor
 @NoArgsConstructor

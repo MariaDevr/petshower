@@ -1,12 +1,14 @@
 package br.com.petshower.service;
 
-import br.com.petshower.dto.ServicoCreateDTO;
 import br.com.petshower.model.Servico;
-import br.com.petshower.repository.ServicoRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
+import br.com.petshower.dto.ServicoCreateDTO;
+import org.springframework.stereotype.Service;
+import br.com.petshower.repository.ServicoRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+
+
 
 @Service
 public class ServicoService {
