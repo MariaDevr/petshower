@@ -1,0 +1,12 @@
+:host {
+  display: inline-block;
+  margin: 4px;
+}
+
+button {
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  border-radius: var(--radius) !important;
+  padding: 0 1.5rem !important;
+  height: 2.5rem !important;
+}

@@ -1,0 +1,7 @@
+@if (appearance === 'fill') {
+<button mat-raised-button [color]="color">{{ label }}</button>
+}
+@else if (appearance === 'text') {
+<button mat-stroked-button [color]="color">{{ label }}</button>
+}
+
