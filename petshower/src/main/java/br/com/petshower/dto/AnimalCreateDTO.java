@@ -9,7 +9,7 @@ import lombok.*;
 @Getter
 @Setter
 
-public class AnimalDTO {
+public class AnimalCreateDTO {
 
     @NotNull
     private Long clienteId;
@@ -19,4 +19,6 @@ public class AnimalDTO {
 
     @NotNull
     private CategoriaAnimal categoriaAnimal;
+
+    private Integer idade;
 }

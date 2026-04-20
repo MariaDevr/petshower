@@ -10,7 +10,7 @@ import jakarta.validation.constraints.*;
 @Getter
 @Setter
 
-public class AtendimentoDTO {
+public class AtendimentoCreateDTO {
 
     @NotNull
     private Long animalId;
@@ -20,6 +20,9 @@ public class AtendimentoDTO {
 
     @NotNull
     private StatusAtendimento status;
+
+    @NotNull
+    private Boolean entrega;
 
     private String descricao;
 }
