@@ -7,10 +7,13 @@ html {
       primary: mat.$azure-palette,
       tertiary: mat.$blue-palette,
     ),
-    typography: Roboto,
     density: 0,
   ));
 
+}
+
+*, .mat-mdc-button, .mat-mdc-card, .mat-typography {
+  font-family: var(--font-sans) !important;
 }
 
 body {
@@ -20,20 +23,32 @@ body {
   font: var(--mat-sys-body-medium);
   margin: 0;
   height: 100%;
+  font-family: var(--font-sans);
+  --mat-sys-body-medium: 400 1rem var(--font-sans);
 }
 
 :root {
-     /* Alterando definições padrões do Angular */
-     --radius: 0.625rem;
-     --primary-color: #46AA5F;
-     --primary-contrast: #ffffff;
+  --font-sans: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --radius: 0.625rem;
+    --primary-color: #46AA5F;
+    --primary-contrast: #ffffff;
 
-     /* Sobrescrevendo o tema do Angular Material */
-     --mat-sys-primary: var(--primary-color);
-     --mat-sys-on-primary: var(--primary-contrast);
+    /* --- FORÇANDO AS CORES NO MATERIAL 3 --- */
+    // Isso muda a cor de todos os componentes que usam 'primary'
+    --mat-sys-primary: var(--primary-color) !important;
+    --mat-sys-on-primary: var(--primary-contrast) !important;
 
-     /* Aqui aplicamos o arredondamento nos tokens do Material 3 */
-     --mdc-filled-button-container-shape: var(--radius);
-     --mdc-outlined-button-container-shape: var(--radius);
-     --mdc-standard-button-container-shape: var(--radius);
-   }
+
+    --mdc-filled-button-container-color: var(--primary-color) !important;
+    --mdc-filled-button-label-text-color: var(--primary-contrast) !important;
+
+    /* --- FORÇANDO O ARREDONDAMENTO --- */
+    --mdc-filled-button-container-shape: var(--radius) !important;
+    --mdc-outlined-button-container-shape: var(--radius) !important;
+    --mdc-standard-button-container-shape: var(--radius) !important;
+
+    /* --- FORÇANDO A FONTE NOS TOKENS --- */
+    --mat-sys-body-large: var(--font-sans);
+    --mat-sys-body-medium: var(--font-sans);
+    --mat-sys-label-large: var(--font-sans);
+}

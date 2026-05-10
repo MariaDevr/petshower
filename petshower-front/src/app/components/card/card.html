@@ -1,0 +1,17 @@
+<mat-card>
+  @if (title || icon) {
+    <mat-card-header>
+      @if (icon) {
+        <mat-icon >{{ icon }}</mat-icon>
+      }
+      @if (title) {
+        <mat-card-title>{{ title }}</mat-card-title>
+      }
+    </mat-card-header>
+  }
+
+  <mat-card-content>
+   {{ content }}
+  <ng-content></ng-content>
+  </mat-card-content>
+</mat-card>

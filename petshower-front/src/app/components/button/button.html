@@ -1,7 +1,18 @@
 @if (appearance === 'fill') {
-<button mat-raised-button [color]="color">{{ label }}</button>
-}
-@else if (appearance === 'text') {
-<button mat-stroked-button [color]="color">{{ label }}</button>
-}
 
+  <button mat-flat-button [color]="color" [class]="size">
+    @if (icon) {
+    <mat-icon>{{ icon }}</mat-icon>
+    }
+    {{ label }}
+  </button>
+
+} @else {
+
+  <button mat-button [color]="color" [class]="size">
+    @if (icon) {
+    <mat-icon>{{ icon }}</mat-icon>
+    }
+    {{ label }}
+  </button>
+}
