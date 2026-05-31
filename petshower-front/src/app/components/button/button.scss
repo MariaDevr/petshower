@@ -9,4 +9,29 @@ button {
   border-radius: var(--radius) !important;
   padding: 0 1.5rem !important;
   height: 2.5rem !important;
+
+  &.regular{
+  height: 40px !important;
+  padding: 0 16px !important;
+  font-size: 14px;
+  }
+
+  &.large{
+  height: 44px !important;
+  padding: 0 24px !important;
+  font-size: 16px;
+  }
+}
+.material-icons {
+  font-family: 'Material Icons' !important;
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
 }

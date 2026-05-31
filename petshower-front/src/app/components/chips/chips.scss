@@ -1,0 +1,23 @@
+.mat-chip{
+    border: none
+    ;
+}
+mat-chip.custom-chip.success {
+  background: #dbfce7 !important;
+  color: #016630 !important;
+}
+
+mat-chip.custom-chip.danger {
+  background: #ffe2e2 !important;
+  color: #9f0712 !important;
+}
+
+mat-chip.custom-chip.warning {
+  background: #fef9c2 !important;
+  color: #894b00 !important;
+}
+
+mat-chip.custom-chip.info {
+  background: #dbeafe !important;
+  color: #193cb8 !important;
+}
