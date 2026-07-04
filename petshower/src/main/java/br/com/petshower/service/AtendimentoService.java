@@ -1,15 +1,15 @@
 package br.com.petshower.service;
 
+import java.util.List;
 import br.com.petshower.model.Animal;
 import br.com.petshower.model.Atendimento;
-
-import java.util.List;
-import br.com.petshower.dto.AtendimentoCreateDTO;
+import br.com.petshower.mapper.AtendimentoMapper;
 import br.com.petshower.repository.AnimalRepository;
 import br.com.petshower.repository.AtendimentoRepository;
+import br.com.petshower.dto.request.AtendimentoRequestDTO;
+import br.com.petshower.dto.response.AtendimentoResponseDTO;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
-
 
 @Service
 public class AtendimentoService {
@@ -20,7 +20,7 @@ public class AtendimentoService {
     @Autowired
     private AnimalRepository animalRepository;
 
-    public Atendimento criar (AtendimentoCreateDTO dto) {
+    public Atendimento criar (AtendimentoRequestDTO dto) {
         Animal animal = animalRepository.findById(dto.getAnimalId())
                 .orElseThrow(() -> new RuntimeException("Animal não encontrado"));
 
@@ -34,11 +34,14 @@ public class AtendimentoService {
         return atendimentoRepository.save(atendimento);
     }
 
-    public List<Atendimento> listar(){
-        return atendimentoRepository.findAll();
+    public List<AtendimentoResponseDTO> listar(){
+        return atendimentoRepository.findAll()
+                .stream()
+                .map(AtendimentoMapper::toDTO)
+                .toList();
     }
 
-    public Atendimento alterar(Long id, AtendimentoCreateDTO dto){
+    public Atendimento alterar(Long id, AtendimentoRequestDTO dto){
 
         Atendimento atendimento = atendimentoRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Atendimento não encontrado"));
@@ -61,7 +64,7 @@ public class AtendimentoService {
         atendimentoRepository.delete(atendimento);
     }
 
-    private Atendimento aplicarAtualizacaoParcial(Atendimento atendimento, AtendimentoCreateDTO dto){
+    private Atendimento aplicarAtualizacaoParcial(Atendimento atendimento, AtendimentoRequestDTO dto){
 
         if (dto.getAnimalId() != null){
 

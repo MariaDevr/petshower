@@ -1,4 +1,4 @@
-package br.com.petshower.dto;
+package br.com.petshower.dto.request;
 
 import lombok.*;
 import jakarta.validation.constraints.*;
@@ -9,7 +9,7 @@ import br.com.petshower.enums.CategoriaAnimal;
 @Getter
 @Setter
 
-public class AnimalCreateDTO {
+public class AnimalRequestDTO {
 
     @NotNull
     private Long clienteId;

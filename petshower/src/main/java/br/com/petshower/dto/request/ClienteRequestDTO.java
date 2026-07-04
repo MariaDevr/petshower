@@ -1,4 +1,4 @@
-package br.com.petshower.dto;
+package br.com.petshower.dto.request;
 
 import lombok.*;
 import jakarta.validation.constraints.*;
@@ -8,7 +8,7 @@ import jakarta.validation.constraints.*;
 @Getter
 @Setter
 
-public class ClienteCreateDTO {
+public class ClienteRequestDTO {
 
     @NotBlank
     private String nome;

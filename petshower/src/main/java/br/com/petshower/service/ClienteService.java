@@ -1,12 +1,13 @@
 package br.com.petshower.service;
 
-import br.com.petshower.model.Cliente;
-
 import java.util.List;
-import br.com.petshower.dto.ClienteCreateDTO;
-import org.springframework.stereotype.Service;
+import br.com.petshower.model.Cliente;
+import br.com.petshower.mapper.ClienteMapper;
 import br.com.petshower.repository.ClienteRepository;
+import br.com.petshower.dto.request.ClienteRequestDTO;
+import br.com.petshower.dto.response.ClienteResponseDTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 @Service
 public class ClienteService {
@@ -14,7 +15,7 @@ public class ClienteService {
     @Autowired
     private ClienteRepository clienteRepository;
 
-    public Cliente criar(ClienteCreateDTO dto){
+    public Cliente criar(ClienteRequestDTO dto){
 
         Cliente cliente = new Cliente();
         cliente.setNome(dto.getNome());
@@ -25,11 +26,14 @@ public class ClienteService {
         return clienteRepository.save(cliente);
     }
 
-    public List<Cliente> listar(){
-        return clienteRepository.findAll();
+    public List<ClienteResponseDTO> listar(){
+        return clienteRepository.findAll()
+                .stream()
+                .map(ClienteMapper::toDTO)
+                .toList();
     }
 
-    public Cliente alterar(Long id, ClienteCreateDTO dto){
+    public Cliente alterar(Long id, ClienteRequestDTO dto){
 
         Cliente cliente = clienteRepository.findById(id)
             .orElseThrow(() -> new RuntimeException("Cliente não encontrado"));
@@ -52,7 +56,7 @@ public class ClienteService {
         clienteRepository.delete(cliente);
     }
 
-    private  Cliente aplicarAtualizacaoParcial(Cliente cliente, ClienteCreateDTO dto){
+    private  Cliente aplicarAtualizacaoParcial(Cliente cliente, ClienteRequestDTO dto){
 
         if (dto.getNome() != null){
             cliente.setNome(dto.getNome());
