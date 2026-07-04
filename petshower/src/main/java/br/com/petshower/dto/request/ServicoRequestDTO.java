@@ -1,4 +1,4 @@
-package br.com.petshower.dto;
+package br.com.petshower.dto.request;
 
 import lombok.*;
 import java.math.BigDecimal;
@@ -9,7 +9,7 @@ import jakarta.validation.constraints.*;
 @Getter
 @Setter
 
-public class ServicoCreateDTO {
+public class ServicoRequestDTO {
 
     @NotBlank
     private String nome;

@@ -1,4 +1,4 @@
-package br.com.petshower.dto;
+package br.com.petshower.dto.request;
 
 import lombok.*;
 import java.util.Date;
@@ -10,7 +10,7 @@ import br.com.petshower.enums.StatusAtendimento;
 @Getter
 @Setter
 
-public class AtendimentoCreateDTO {
+public class AtendimentoRequestDTO {
 
     @NotNull
     private Long animalId;
