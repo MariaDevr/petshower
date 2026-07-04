@@ -1,13 +1,14 @@
 package br.com.petshower.service;
 
+import java.util.List;
 import br.com.petshower.model.Animal;
 import br.com.petshower.model.Cliente;
-
-import java.util.List;
-import br.com.petshower.dto.AnimalCreateDTO;
-import org.springframework.stereotype.Service;
+import br.com.petshower.mapper.AnimalMapper;
 import br.com.petshower.repository.AnimalRepository;
+import br.com.petshower.dto.request.AnimalRequestDTO;
 import br.com.petshower.repository.ClienteRepository;
+import br.com.petshower.dto.response.AnimalResponseDTO;
+import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 
 @Service
@@ -19,7 +20,7 @@ public class AnimalService {
     @Autowired
     private ClienteRepository clienteRepository;
 
-    public Animal criar(AnimalCreateDTO dto) {
+    public Animal criar(AnimalRequestDTO dto) {
 
         Cliente cliente = clienteRepository.findById(dto.getClienteId())
                 .orElseThrow(() -> new RuntimeException("Cliente não encontrado"));
@@ -33,8 +34,11 @@ public class AnimalService {
         return animalRepository.save(animal);
     }
 
-    public List<Animal> listar() {
-        return animalRepository.findAll();
+    public List<AnimalResponseDTO> listar() {
+        return animalRepository.findAll()
+                .stream()
+                .map(AnimalMapper::toDTO)
+                .toList();
     }
 
     public Animal buscarPorId(Long id) {
@@ -42,7 +46,7 @@ public class AnimalService {
                 .orElseThrow(() -> new RuntimeException("Animal não encontrado"));
     }
 
-    public Animal alterar(Long id, AnimalCreateDTO dto) {
+    public Animal alterar(Long id, AnimalRequestDTO dto) {
 
         Animal animal = animalRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Animal não encontrado"));
@@ -52,7 +56,6 @@ public class AnimalService {
         return animalRepository.save(animal);
     }
 
-
     public void excluir(Long id) {
 
         Animal animal = animalRepository.findById(id)
@@ -61,7 +64,7 @@ public class AnimalService {
         animalRepository.delete(animal);
     }
 
-    private Animal aplicarAtualizacaoParcial(Animal animal, AnimalCreateDTO dto) {
+    private Animal aplicarAtualizacaoParcial(Animal animal, AnimalRequestDTO dto) {
 
         if (dto.getClienteId() != null) {
 

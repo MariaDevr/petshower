@@ -1,14 +1,13 @@
 package br.com.petshower.service;
 
-import br.com.petshower.model.Servico;
-
 import java.util.List;
-import br.com.petshower.dto.ServicoCreateDTO;
-import org.springframework.stereotype.Service;
+import br.com.petshower.model.Servico;
+import br.com.petshower.mapper.ServicoMapper;
+import br.com.petshower.dto.response.ServicoResponseDTO;
+import br.com.petshower.dto.request.ServicoRequestDTO;
 import br.com.petshower.repository.ServicoRepository;
+import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
-
-
 
 @Service
 public class ServicoService {
@@ -16,7 +15,7 @@ public class ServicoService {
     @Autowired
     private ServicoRepository servicoRepository;
 
-    public Servico criar (ServicoCreateDTO dto) {
+    public Servico criar (ServicoRequestDTO dto) {
 
         Servico servico = new Servico();
 
@@ -26,11 +25,14 @@ public class ServicoService {
         return servicoRepository.save(servico);
     }
 
-    public List<Servico> listar(){
-        return servicoRepository.findAll();
+    public List<ServicoResponseDTO> listar(){
+        return servicoRepository.findAll()
+                .stream()
+                .map(ServicoMapper::toDTO)
+                .toList();
     }
 
-    public Servico alterar(Long id, ServicoCreateDTO dto){
+    public Servico alterar(Long id, ServicoRequestDTO dto){
 
         Servico servico = servicoRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Serviço não encontrado"));
@@ -51,7 +53,7 @@ public class ServicoService {
         servicoRepository.deleteById(id);
     }
 
-    private Servico aplicarAtualizacaoParcial(Servico servico, ServicoCreateDTO dto){
+    private Servico aplicarAtualizacaoParcial(Servico servico, ServicoRequestDTO dto){
 
         if(dto.getNome() != null){
             servico.setNome(dto.getNome());
